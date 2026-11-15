@@ -274,6 +274,8 @@ export class UI {
       if (list && this.onRadio) this.onRadio('custom', list);
     });
     $('settings-btn').addEventListener('click', (e) => { e.currentTarget.blur(); this._toggleDrawer(); });
+    // back to the start screen: a fresh page (settings and the last place are remembered), without test params
+    $('home-btn')?.addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); location.href = location.pathname; });
     $('drawer-close').addEventListener('click', (e) => { e.currentTarget.blur(); this._toggleDrawer(false); });
     this._bindRange($('ambience'), 'ambience');
     this._bindRange($('radio-volume'), 'music');

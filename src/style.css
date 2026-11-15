@@ -85,6 +85,7 @@ kbd { font-family: var(--sans); font-size: 10.5px; border: 1px solid var(--line)
 .wordmark { position: absolute; top: 20px; left: 24px; font-family: var(--serif); font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-dim); text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
 .settings-btn { position: absolute; top: 16px; right: 20px; }
 .fs-btn { position: absolute; top: 16px; right: 132px; }
+.home-btn { position: absolute; top: 16px; right: 270px; }
 .hud-readout { position: absolute; right: 24px; bottom: 44px; padding: 16px 22px 14px; text-align: right; min-width: 210px; }
 .speed { display: flex; align-items: baseline; justify-content: flex-end; gap: 8px; }
 .speed-num { font-size: 56px; font-weight: 200; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
@@ -151,10 +152,10 @@ textarea::placeholder { color: var(--ink-faint); }
 
 /* recording mode: the YouTube player box is replaced by nothing (the card still shows the song) */
 body.film #radio-mount { display: none; }
-body.film .fs-btn { display: none; }
+body.film .fs-btn, body.film .home-btn { display: none; }
 
 /* scene inside the continuous show: no buttons, no cursor */
-body.embed .fs-btn, body.embed .settings-btn { display: none; }
+body.embed .fs-btn, body.embed .settings-btn, body.embed .home-btn { display: none; }
 body.embed, body.embed * { cursor: none !important; }
 body.embed #start { visibility: hidden; }
 body.embed #hud { transition: opacity 1.6s ease; }
