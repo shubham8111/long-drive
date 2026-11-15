@@ -4,10 +4,10 @@
 
 <p align="center">
   <a href="https://shubham8111.github.io/long-drive/"><b>▶ Drive it now</b></a> ·
-  <a href="docs/media/trailer.mp4"><b>Watch the 2-minute trailer</b></a>
+  <a href="https://shubham8111.github.io/long-drive/trailer/"><b>Watch the 2-minute trailer</b></a>
 </p>
 
-<p align="center"><a href="docs/media/trailer.mp4"><img src="docs/media/trailer.gif" alt="Long Drive trailer" width="100%"></a></p>
+<p align="center"><a href="https://shubham8111.github.io/long-drive/trailer/"><img src="docs/media/trailer.gif" alt="Long Drive trailer" width="100%"></a></p>
 
 ## Why this exists
 
@@ -54,7 +54,7 @@ another place, so a drive can go on for hours without repeating.
   canopy), species chosen by elevation (juniper → ponderosa → fir, spruce and aspen groves), hoodoo fields grown on
   the steep bare rock below Bryce's rim, rock arches carved with marching cubes.
 - **Time and weather** — a full day/night cycle with sun, moon and stars; pick the hour and the weather to start in
-  (clear, clouds, overcast, mist, rain or snow) and from there it drifts on its own; wet roads, headlights, lit windows at night.
+  (clear, clouds, overcast, rain or snow) and from there it drifts on its own; wet roads, headlights, lit windows at night.
 - **A radio** — three stations of free-licensed music (or paste your own YouTube playlist) and an announcer who
   mentions the weather, the hour and true little facts about what you are passing.
 - **Life** — birds, deer, people and light traffic, plus the occasional surprise (hot-air balloons over the canyon,

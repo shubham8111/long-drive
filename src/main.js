@@ -179,7 +179,7 @@ const ui = new UI({
   route: [data.name, data.region].filter(Boolean).join(' · '),
   stops: route.stops,
   rides: RIDES,
-  weather: { any: { label: 'Any' }, ...WEATHER }, // only where the drive begins: it drifts on from there
+  weather: { any: { label: 'Any' }, ...Object.fromEntries(Object.entries(WEATHER).filter(([k]) => k !== 'mist')) }, // only where the drive begins: it drifts on from there (mist just rolls in at dawn)
   stations: STATIONS.filter((s) => s.id !== 'mine' || s.tracks.length),
   settings: { stop: 0, ride: 'car', weather: 'any', hours: 16.5, timeFlows: true, station: 'open-road', cam: 'seat', ambience: 0.6, music: 0.7, graphics: 'laptop', interleave: true, windDown: 0, quiet: false },
 });

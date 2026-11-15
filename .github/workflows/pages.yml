@@ -25,6 +25,7 @@ jobs:
       - run: npx vite build --base=/${{ github.event.repository.name }}/
         env:
           VITE_STATIC: '1'
+      - run: mkdir -p dist/trailer && cp docs/trailer.html dist/trailer/index.html && cp docs/media/trailer.mp4 docs/media/trailer.gif dist/trailer/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
