@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>tunnel test</title>
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style></head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { Tunnel } from '../src/tunnel.js';
+const q = new URLSearchParams(location.search);
+const view = q.get('view') || 'inside';
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.5;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const cam = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 3000);
+const tunnel = new Tunnel(renderer);
+if (q.get('exitcol')) tunnel.setExitColor(new THREE.Color('#' + q.get('exitcol')));
+let tick = () => {};
+if (view.startsWith('portal')) {
+  const sky = new THREE.Color(0.45, 0.65, 0.95);
+  scene.background = sky; scene.fog = new THREE.Fog(sky, 150, 900);
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(1200, 1200).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x4d6b38, roughness: 1 }));
+  ground.position.y = -0.05; scene.add(ground);
+  const road = new THREE.Mesh(new THREE.PlaneGeometry(2 * +(q.get('hw') || 7), 400).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x2a2a2c, roughness: 0.9 }));
+  road.position.set(0, 0, 200); scene.add(road);
+  scene.add(new THREE.HemisphereLight(0xbcd8ff, 0x59603f, 1.6));
+  const sun = new THREE.DirectionalLight(0xfff0d8, 2.6); sun.position.set(40, 60, 50); scene.add(sun);
+  const p = tunnel.makePortal({ style: view === 'portal-city' ? 'city' : 'rock', halfWidth: +(q.get('hw') || 7) });
+  scene.add(p);
+  const d = +(q.get('d') || 40), ang = +(q.get('ang') || 0) * Math.PI / 180;
+  cam.position.set(Math.sin(ang) * d, +(q.get('h') || 2), Math.cos(ang) * d);
+  cam.lookAt(0, +(q.get('ty') || 5), 0);
+  window.__calls = () => { let n = 0; p.traverse((o) => { if (o.isMesh) n++; }); return n; };
+} else {
+  scene.background = new THREE.Color(0);
+  scene.add(tunnel.interior);
+  if (view === 'exit') tunnel.setExit(+(q.get('d') || 80));
+  cam.position.set(1.9, 1.2, +(q.get('z') || 0));
+  cam.lookAt(1.9, 1.7, -50);
+  window.__calls = () => 3;
+  if (q.get('drive')) { let t0 = performance.now(); tick = () => { const z = -((performance.now() - t0) / 1000) * 25 % 14; cam.position.z = z; }; }
+}
+function loop() { tick(); renderer.render(scene, cam); window.__info = renderer.info.render; requestAnimationFrame(loop); }
+loop();
+window.__ready = true;
+</script>
+</body></html>

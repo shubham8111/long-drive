@@ -1,0 +1,138 @@
+<!doctype html><html><body style="margin:0;background:#000"><canvas id="view" style="width:100vw;height:100vh;display:block"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { buildAssets } from '/src/assets.js';
+import { SkySystem } from '/src/sky.js';
+import { loadAuthoredModels } from '/src/models.js';
+
+const q = new URLSearchParams(location.search);
+const view = q.get('view') || 'grove', hours = +(q.get('hours') || 16), weather = q.get('weather') || 'clear';
+const canvas = document.getElementById('view');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.5;
+renderer.setPixelRatio(1); renderer.setSize(innerWidth, innerHeight, false);
+if (q.get('shadows') !== '0') { renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap; }
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(62, innerWidth / innerHeight, 0.15, 400000);
+const sky = new SkySystem(scene, renderer, 37.6);
+const shared = sky.shared;
+window.__status = { settled: false, busy: 1 };
+const t0 = performance.now();
+const A = buildAssets(renderer, shared);
+if (new URLSearchParams(location.search).get('models') !== '0') await loadAuthoredModels(A, renderer, shared);
+const buildMs = performance.now() - t0;
+window.__tris = A.stats ? A.stats() : null; window.__buildMs = buildMs; window.__broadMs = A.broadMs;
+console.error('authored ' + JSON.stringify([...A.rock, ...A.shrub].map((v) => !!v.authored)) + ' build ms ' + buildMs.toFixed(0) + ' broadleaf ms ' + (A.broadMs || 0).toFixed(0) + ' tris ' + JSON.stringify(window.__tris));
+
+let seed = 1234;
+const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+// ground + road
+const gtex = (() => {
+  const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d');
+  g.fillStyle = '#cf9a74'; g.fillRect(0, 0, 256, 256);
+  for (let i = 0; i < 4000; i++) { const v = 100 + rnd() * 110 | 0; g.fillStyle = `rgba(${v + 40},${v * 0.7 | 0},${v * 0.5 | 0},0.35)`; g.fillRect(rnd() * 256, rnd() * 256, 2 + rnd() * 5, 2 + rnd() * 3); }
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(600, 600); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+})();
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(6000, 6000), new THREE.MeshStandardMaterial({ map: gtex, roughness: 1 }));
+ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+const road = new THREE.Mesh(new THREE.PlaneGeometry(7, 6000), new THREE.MeshStandardMaterial({ color: 0x2a2a2c, roughness: 0.9 }));
+road.rotation.x = -Math.PI / 2; road.position.y = 0.01; road.receiveShadow = true;
+if (view === 'grove') scene.add(road);
+
+function place(variant, items, rowOffsetFar) {
+  // items: [{x,z,s,ry,tint}]
+  const parts = [...variant.near.map((p) => ({ ...p, far: false }))];
+  if (variant.far) parts.push({ geometry: variant.far.geometry, material: variant.far.material, far: true });
+  const dummy = new THREE.Object3D();
+  for (const p of parts) {
+    const im = new THREE.InstancedMesh(p.geometry, p.material, items.length);
+    items.forEach((it, i) => {
+      dummy.position.set(it.x, 0, it.z); dummy.rotation.set(0, it.ry, 0); dummy.scale.setScalar(it.s); dummy.updateMatrix();
+      im.setMatrixAt(i, dummy.matrix);
+      im.setColorAt(i, new THREE.Color().setRGB(it.tint[0], it.tint[1], it.tint[2]));
+    });
+    im.instanceMatrix.needsUpdate = true; im.instanceColor.needsUpdate = true;
+    im.frustumCulled = false; im.castShadow = !p.far; 
+    scene.add(im);
+  }
+}
+const tintR = () => [0.9 + rnd() * 0.2, 0.92 + rnd() * 0.16, 0.9 + rnd() * 0.2];
+const mk = (x, z, s0 = 1, s1 = 1) => ({ x, z, s: s0 + rnd() * (s1 - s0), ry: rnd() * 6.283, tint: tintR() });
+
+let camPos = new THREE.Vector3(0, 1.3, -6), look = new THREE.Vector3(0, 6, 40);
+
+if (view === 'broad') {
+  // pine for scale + 3 broadleaf near (z=0, left) and their baked far impostors (right). ?sub=near|far|low for closer looks
+  shared.uLodDist.value = 1e7;
+  const sharedFar = { uWet: shared.uWet, uSnow: shared.uSnow, uTime: shared.uTime, uLodDist: { value: 0 } };
+  const B = buildAssets(renderer, sharedFar);
+  const T = [1, 1, 1], sp = 13;
+  place(A.pine[1], [{ x: -2 * sp - 4, z: 0, s: 1, ry: 0.4, tint: T }]);
+  A.broadleaf.forEach((v, i) => place(v, [{ x: (i - 1) * sp + 6, z: 0, s: 1, ry: 0.4 + i, tint: T }]));
+  place({ near: [], far: B.pine[1].far }, [{ x: -2 * sp - 4, z: 40, s: 1, ry: 0.4, tint: T }]);
+  B.broadleaf.forEach((v, i) => place({ near: [], far: v.far }, [{ x: (i - 1) * sp + 6, z: 40, s: 1, ry: 0.4 + i, tint: T }]));
+  camPos.set(2, 5, -62); look.set(2, 8, 0);
+  const sub = q.get('sub');
+  if (sub === 'near') { camPos.set(2, 4, -48); look.set(2, 7, 0); }
+  if (sub === 'far') { camPos.set(2, 5, -22); look.set(2, 8, 40); }
+  if (sub === 'low') { camPos.set(6, 1.6, -16); look.set(6, 6, 0); }
+} else if (view === 'lineup') {
+  shared.uLodDist.value = 1e7; // near everywhere
+  const sharedFar = { uWet: shared.uWet, uSnow: shared.uSnow, uTime: shared.uTime, uLodDist: { value: 0 } };
+  const B = buildAssets(renderer, sharedFar);
+  if (q.get('models') !== '0') await loadAuthoredModels(B, renderer, sharedFar);
+  const sp = 11;
+  A.pine.forEach((v, i) => place(v, [{ x: (i - 1) * sp - 18, z: 0, s: 1, ry: 0.4, tint: [1, 1, 1] }]));
+  B.pine.forEach((v, i) => place({ near: [], far: v.far }, [{ x: (i - 1) * sp + 18, z: 0, s: 1, ry: 0.4, tint: [1, 1, 1] }]));
+  A.shrub.forEach((v, i) => place(v, [{ x: -6 + i * 3, z: -12, s: 1, ry: 0.3, tint: [1, 1, 1] }]));
+  A.rock.forEach((v, i) => place(v, [{ x: 3 + i * 4, z: -12, s: 1, ry: 0.3, tint: [1, 1, 1] }]));
+  camPos.set(0, 5, -52); look.set(0, 9, 0);
+  if (q.get('sub') === 'low') { camPos.set(0, 1.6, -22); look.set(-0.5, 1, -12); }
+} else {
+  if (view === 'far') shared.uLodDist.value = 0;
+  const items = { p: [[], [], []], s: [[], []], r: [[], [], []] };
+  const pts = [];
+  const tryAdd = (x, z, r) => { for (const p of pts) if (Math.hypot(p[0] - x, p[1] - z) < r + p[2]) return false; pts.push([x, z, r]); return true; };
+  let n = 0, guard = 0;
+  while (n < 60 && guard++ < 4000) {
+    const side = rnd() < 0.5 ? -1 : 1;
+    const x = side * (4.5 + Math.pow(rnd(), 1.6) * 60), z = -4 + Math.pow(rnd(), 1.2) * 150;
+    if (!tryAdd(x, z, 3.4)) continue;
+    items.p[(rnd() * 3) | 0].push(mk(x, z, 0.8, 1.25)); n++;
+  }
+  if (view === 'closeup') { items.p[1].push(mk(7, 14, 1, 1)); pts.push([7, 14, 4]); items.p[2].push(mk(-6, 20, 1, 1)); items.p[0].push(mk(3.5, 10, 1, 1)); }
+  for (let i = 0; i < 160; i++) {
+    const side = rnd() < 0.5 ? -1 : 1, x = side * (4.2 + Math.pow(rnd(), 1.4) * 40), z = -4 + rnd() * 100;
+    if (!tryAdd(x, z, 0.9)) continue; items.s[i % 2].push(mk(x, z, 0.8, 1.3));
+  }
+  for (let i = 0; i < 36; i++) {
+    const side = rnd() < 0.5 ? -1 : 1, x = side * (4.6 + Math.pow(rnd(), 1.4) * 40), z = -4 + rnd() * 110;
+    if (!tryAdd(x, z, 1.5)) continue; items.r[i % 3].push(mk(x, z, 0.7, 1.4));
+  }
+  A.pine.forEach((v, i) => items.p[i]?.length && place(v, items.p[i]));
+  A.shrub.forEach((v, i) => items.s[i].length && place(v, items.s[i]));
+  A.rock.forEach((v, i) => items.r[i].length && place(v, items.r[i]));
+  if (view === 'closeup') { camPos.set(2.2, 1.7, 3.2); look.set(6.5, 5.5, 14); }
+  if (view === 'far') { camPos.set(0, 1.3, -6); look.set(0, 8, 60); }
+}
+if (q.get('cam')) camPos.fromArray(q.get('cam').split(',').map(Number));
+if (q.get('look')) look.fromArray(q.get('look').split(',').map(Number));
+if (q.get('lod')) shared.uLodDist.value = +q.get('lod');
+camera.position.copy(camPos); camera.lookAt(look);
+if (q.get('fov')) { camera.fov = +q.get('fov'); camera.updateProjectionMatrix(); }
+
+const fogv = new THREE.Vector3();
+let last = performance.now(), frames = 0;
+function frame() {
+  const now = performance.now(), dt = Math.min(0.1, (now - last) / 1000); last = now;
+  sky.update(dt, camera, hours, weather, fogv);
+  if (q.get('snow')) shared.uSnow.value = +q.get('snow');
+  if (q.get('wet')) shared.uWet.value = +q.get('wet');
+  renderer.render(scene, camera);
+  if (++frames === 8) window.__status = { settled: true, busy: 0 };
+  requestAnimationFrame(frame);
+}
+addEventListener('resize', () => { renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); });
+frame();
+</script></body></html>

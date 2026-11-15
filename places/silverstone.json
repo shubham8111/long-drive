@@ -1,0 +1,35 @@
+{
+  "id": "silverstone",
+  "name": "Silverstone",
+  "region": "England",
+  "short": "Silverstone",
+  "blurb": "Wide open sweeps across the old airfield.",
+  "kind": "circuit",
+  "loop": true,
+  "source": {
+    "type": "geojson",
+    "url": "https://raw.githubusercontent.com/bacinger/f1-circuits/master/circuits/gb-1948.geojson"
+  },
+  "stops": [
+    {
+      "name": "Start / Finish",
+      "at": "start"
+    }
+  ],
+  "facts": [
+    {
+      "frac": 0.05,
+      "texts": [
+        "Silverstone was a wartime bomber airfield. The first Grand Prix here was in 1948.",
+        "In 2024 Lewis Hamilton won his ninth British Grand Prix here, the most wins any driver has had at a single circuit."
+      ]
+    },
+    {
+      "frac": 0.55,
+      "texts": [
+        "The very first Formula One World Championship race was held here, in May 1950.",
+        "Aston Martin's Formula One team is based right beside the circuit, and most of the teams are within an hour's drive, in what is called Motorsport Valley."
+      ]
+    }
+  ]
+}

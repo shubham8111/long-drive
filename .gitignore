@@ -1,0 +1,10 @@
+node_modules
+.env.local
+.cache
+dist
+# downloaded map tiles, OSM extracts, voice model, music samples: large, and re-downloadable by the build scripts
+data/
+# rendered clips (the README trailer lives in docs/media)
+videos/
+.claude/
+.DS_Store

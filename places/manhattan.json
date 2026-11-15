@@ -1,0 +1,197 @@
+{
+  "id": "manhattan",
+  "name": "Times Square to Washington Square",
+  "region": "Manhattan, New York",
+  "short": "Manhattan",
+  "blurb": "Down Seventh Avenue through Times Square and Fifth past the Empire State, then back up Sixth to the park.",
+  "kind": "city",
+  "loop": true,
+  "source": {
+    "type": "osrm",
+    "points": [
+      [
+        -73.98033,
+        40.76511
+      ],
+      [
+        -73.98577,
+        40.75765
+      ],
+      [
+        -73.989,
+        40.7506
+      ],
+      [
+        -73.98622,
+        40.74905
+      ],
+      [
+        -73.98558,
+        40.74708
+      ],
+      [
+        -73.99598,
+        40.73279
+      ],
+      [
+        -73.99715,
+        40.73691
+      ],
+      [
+        -73.98401,
+        40.75492
+      ],
+      [
+        -73.9803,
+        40.75998
+      ],
+      [
+        -73.97764,
+        40.76626
+      ],
+      [
+        -73.98033,
+        40.76511
+      ]
+    ]
+  },
+  "stops": [
+    {
+      "name": "Central Park South",
+      "at": "start"
+    },
+    {
+      "name": "Times Square",
+      "lat": 40.7577,
+      "lon": -73.9862
+    },
+    {
+      "name": "Herald Square",
+      "lat": 40.7497,
+      "lon": -73.988
+    },
+    {
+      "name": "Empire State Building",
+      "lat": 40.7484,
+      "lon": -73.9857
+    },
+    {
+      "name": "Flatiron",
+      "lat": 40.7411,
+      "lon": -73.9897
+    },
+    {
+      "name": "Washington Square",
+      "lat": 40.7314,
+      "lon": -73.997
+    },
+    {
+      "name": "Bryant Park",
+      "lat": 40.7547,
+      "lon": -73.9838
+    },
+    {
+      "name": "Radio City",
+      "lat": 40.7597,
+      "lon": -73.98
+    }
+  ],
+  "facts": [
+    {
+      "lat": 40.766,
+      "lon": -73.979,
+      "texts": [
+        "Central Park opened in the late 1850s. Every lake and meadow in it was designed and built.",
+        "Central Park is larger than the whole country of Monaco.",
+        "Central Park has appeared in hundreds of films, more than almost any other place on Earth.",
+        "In the film Enchanted, from 2007, a whole musical number dances its way through Central Park, over Bow Bridge and past the boathouse.",
+        "The New York City Marathon finishes here in Central Park, every November.",
+        "The rocks in Central Park are Manhattan schist, scraped smooth by glaciers in the last ice age. You can still see the scratches."
+      ]
+    },
+    {
+      "lat": 40.7577,
+      "lon": -73.9862,
+      "texts": [
+        "Times Square was named in 1904, when The New York Times moved into the tower at its southern end.",
+        "A ball has dropped from the tower at One Times Square on New Year's Eve since the end of 1907.",
+        "City rules here require buildings to carry bright signs, so the lights of Times Square are part of the law."
+      ]
+    },
+    {
+      "lat": 40.7497,
+      "lon": -73.988,
+      "texts": [
+        "Macy's at Herald Square fills an entire city block and was for many years called the largest store in the world.",
+        "The Macy's Thanksgiving Day Parade ends here at Herald Square."
+      ]
+    },
+    {
+      "lat": 40.7484,
+      "lon": -73.9857,
+      "texts": [
+        "The Empire State Building went up in just over thirteen months, and opened in 1931.",
+        "The Empire State Building has its own zip code.",
+        "For nearly forty years, the Empire State Building was the tallest building in the world.",
+        "The Empire State Building is struck by lightning around twenty-five times a year. It was built to take it."
+      ]
+    },
+    {
+      "lat": 40.7411,
+      "lon": -73.9897,
+      "texts": [
+        "The Flatiron Building, from 1902, is only about two metres wide at its narrow end.",
+        "In the Spider-Man films, the Flatiron Building was home to the Daily Bugle, the newspaper Peter Parker works for.",
+        "Twice a year, in late May and mid July, the setting sun lines up exactly with Manhattan's cross streets. People call it Manhattanhenge.",
+        "Around the turn of the century, this neighbourhood was nicknamed Silicon Alley, for its wave of internet start-ups."
+      ]
+    },
+    {
+      "lat": 40.7314,
+      "lon": -73.997,
+      "texts": [
+        "The marble arch in Washington Square was finished in the 1890s, to mark a century since Washington's inauguration.",
+        "Washington Square Park was once a potter's field, a public burial ground."
+      ]
+    },
+    {
+      "lat": 40.7547,
+      "lon": -73.9838,
+      "texts": [
+        "The two stone lions outside the New York Public Library are called Patience and Fortitude.",
+        "Bryant Park sits on top of the library's stacks: millions of books are kept underneath the lawn."
+      ]
+    },
+    {
+      "lat": 40.7597,
+      "lon": -73.98,
+      "texts": [
+        "Radio City Music Hall opened in 1932, and its great stage curtain is said to be the largest in the world.",
+        "The Rockettes have danced at Radio City since the 1930s."
+      ]
+    }
+  ],
+  "scenery": {
+    "streetTrees": 0.25,
+    "parks": [
+      {
+        "lat": 40.7536,
+        "lon": -73.9832,
+        "r": 150
+      },
+      {
+        "lat": 40.7308,
+        "lon": -73.9973,
+        "r": 150
+      },
+      {
+        "lat": 40.742,
+        "lon": -73.9877,
+        "r": 150
+      },
+      {
+        "north": 40.7644
+      }
+    ]
+  }
+}

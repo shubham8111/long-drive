@@ -1,0 +1,143 @@
+{
+  "id": "paris",
+  "name": "Champs-Élysées to Notre-Dame",
+  "region": "Paris",
+  "short": "Paris",
+  "blurb": "From the Arc de Triomphe along the Seine, with nowhere to be.",
+  "kind": "city",
+  "source": {
+    "type": "osrm",
+    "points": [
+      [
+        2.2975,
+        48.8732
+      ],
+      [
+        2.317,
+        48.8668
+      ],
+      [
+        2.3365,
+        48.859
+      ],
+      [
+        2.3493,
+        48.8555
+      ],
+      [
+        2.293,
+        48.86
+      ]
+    ]
+  },
+  "stops": [
+    {
+      "name": "Arc de Triomphe",
+      "at": "start"
+    },
+    {
+      "name": "Champs-Élysées",
+      "lat": 48.8698,
+      "lon": 2.307
+    },
+    {
+      "name": "Place de la Concorde",
+      "lat": 48.8656,
+      "lon": 2.3212
+    },
+    {
+      "name": "The Louvre",
+      "lat": 48.8597,
+      "lon": 2.3376
+    },
+    {
+      "name": "Notre-Dame",
+      "lat": 48.853,
+      "lon": 2.3499
+    },
+    {
+      "name": "Musée d'Orsay",
+      "lat": 48.86,
+      "lon": 2.3266
+    },
+    {
+      "name": "Eiffel Tower",
+      "lat": 48.8584,
+      "lon": 2.2945
+    }
+  ],
+  "facts": [
+    {
+      "frac": 0.02,
+      "texts": [
+        "The Arc de Triomphe was ordered by Napoleon in 1806, and took thirty years to finish.",
+        "Beneath the Arc de Triomphe lies the Tomb of the Unknown Soldier, whose flame is rekindled every evening.",
+        "Twelve avenues meet at the Arc de Triomphe, which is why the square around it was called the Star.",
+        "The big fight in John Wick Chapter Four, from 2023, is set in the traffic around the Arc de Triomphe. The crew had only a few hours at the real arch, so much of it was filmed elsewhere.",
+        "Every fourteenth of July, the Bastille Day military parade marches down the Champs-Élysées from here."
+      ]
+    },
+    {
+      "lat": 48.8698,
+      "lon": 2.307,
+      "texts": [
+        "The Tour de France has finished on the Champs-Élysées almost every year since 1975.",
+        "Champs-Élysées means the Elysian Fields, the resting place of heroes in Greek myth.",
+        "Every twenty-first of June, the Fête de la Musique fills the streets of Paris with free music, from dusk till late."
+      ]
+    },
+    {
+      "lat": 48.8656,
+      "lon": 2.3212,
+      "texts": [
+        "The obelisk at Concorde is more than three thousand years old. It came from Luxor in the 1830s.",
+        "During the Revolution, Place de la Concorde was where the guillotine stood.",
+        "At the Paris Olympics in 2024, Place de la Concorde became an open-air arena for skateboarding, BMX and breaking."
+      ]
+    },
+    {
+      "lat": 48.8597,
+      "lon": 2.3376,
+      "texts": [
+        "The Louvre began as a fortress around 1190. It became a museum in 1793.",
+        "The glass pyramid at the Louvre opened in 1989, designed by the architect I M Pei.",
+        "The Louvre is the most visited museum in the world.",
+        "The Da Vinci Code was filmed inside the Louvre in 2005, at night, after the visitors had gone.",
+        "During the 2024 Olympics, the cauldron was a glowing balloon that rose over the Tuileries garden, beside the Louvre, every evening.",
+        "In 2021 the Louvre put its whole collection online, nearly half a million works, free for anyone to browse."
+      ]
+    },
+    {
+      "lat": 48.853,
+      "lon": 2.3499,
+      "texts": [
+        "Notre-Dame was begun in 1163. It reopened in December 2024, after the fire of 2019.",
+        "All road distances in France are measured from a small bronze point zero in front of Notre-Dame.",
+        "Victor Hugo's novel about Notre-Dame stirred so much feeling that the cathedral was restored in the 1800s.",
+        "Years before the fire, an art historian laser-scanned Notre-Dame, a billion points of it. Those scans helped the builders put it back together."
+      ]
+    },
+    {
+      "lat": 48.86,
+      "lon": 2.3266,
+      "texts": [
+        "The Musée d'Orsay was a railway station, built for the World's Fair of 1900.",
+        "The great clocks of the old station still look out over the Seine from the Musée d'Orsay.",
+        "Orsay holds one of the world's great collections of Impressionist paintings.",
+        "In the summer of 2025, Parisians could swim in the Seine again, for the first time in a hundred years."
+      ]
+    },
+    {
+      "lat": 48.8584,
+      "lon": 2.2945,
+      "texts": [
+        "The Eiffel Tower was built for the World's Fair of 1889, and was meant to stand for only twenty years.",
+        "After dark, the Eiffel Tower sparkles with twenty thousand lights for a few minutes every hour.",
+        "In the summer heat, the Eiffel Tower can grow about fifteen centimetres taller.",
+        "Every medal at the Paris 2024 Olympics carried a small piece of original iron from the Eiffel Tower.",
+        "For the 2024 Olympics, beach volleyball was played in a stadium built right at the foot of the Eiffel Tower.",
+        "The Eiffel Tower was saved from demolition partly because it was so useful to science, as a giant radio mast and weather station."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "id": "bryce",
+  "name": "Bryce Canyon Scenic Drive",
+  "region": "Utah",
+  "short": "Bryce Canyon",
+  "blurb": "A slow, unhurried road through the hoodoos. No destination, no clock but the sun.",
+  "kind": "scenic",
+  "source": {
+    "type": "osrm",
+    "points": [
+      [
+        -112.3827,
+        37.7515
+      ],
+      [
+        -112.157,
+        37.673
+      ],
+      [
+        -112.2404,
+        37.4751
+      ]
+    ]
+  },
+  "origin": {
+    "lat": 37.62,
+    "lon": -112.25
+  },
+  "stops": [
+    {
+      "name": "Red Canyon",
+      "at": "start"
+    },
+    {
+      "name": "Bryce Canyon City",
+      "lat": 37.674,
+      "lon": -112.157
+    },
+    {
+      "name": "Park Entrance",
+      "lat": 37.6404,
+      "lon": -112.1696
+    },
+    {
+      "name": "Inspiration Point turnoff",
+      "lat": 37.6151,
+      "lon": -112.1707
+    },
+    {
+      "name": "Farview Point",
+      "lat": 37.5445,
+      "lon": -112.2469
+    },
+    {
+      "name": "Natural Bridge",
+      "lat": 37.5315,
+      "lon": -112.2597
+    },
+    {
+      "name": "Rainbow Point",
+      "at": "end"
+    }
+  ],
+  "facts": [
+    {
+      "frac": 0.02,
+      "texts": [
+        "The two short tunnels on this road were cut through the red rock in 1925, to welcome the first motor tourists on their way to Bryce.",
+        "Bryce sits at the top of the Grand Staircase, a giant series of cliffs that steps down, layer by layer, all the way to the Grand Canyon."
+      ]
+    },
+    {
+      "lat": 37.674,
+      "lon": -112.157,
+      "texts": [
+        "Ruby Syrett settled here in 1916 and was soon putting up travellers. His family still runs the inn.",
+        "The Utah prairie dog, a threatened species, lives in the meadows around here. Listen for its little warning bark."
+      ]
+    },
+    {
+      "lat": 37.6404,
+      "lon": -112.1696,
+      "texts": [
+        "Bryce Canyon isn't really a canyon. It's a row of natural amphitheatres carved into the edge of the Paunsaugunt Plateau.",
+        "On a clear, moonless night here you can see thousands of stars, and the Milky Way casts a faint glow.",
+        "In 2019 Bryce Canyon was certified as an International Dark Sky Park, at the highest, gold tier."
+      ]
+    },
+    {
+      "lat": 37.6151,
+      "lon": -112.1707,
+      "texts": [
+        "The rock spires out there are called hoodoos. Frost does most of the carving: the temperature here crosses freezing around two hundred nights a year.",
+        "Bryce has the largest concentration of hoodoos anywhere on Earth.",
+        "The rim is wearing back by a few feet every century, slowly making new hoodoos as old ones fall.",
+        "In October 2023 a ring of fire eclipse passed over the park, and crowds stood among the hoodoos before dawn to watch it."
+      ]
+    },
+    {
+      "lat": 37.5445,
+      "lon": -112.2469,
+      "texts": [
+        "The park is named for Ebenezer Bryce, a settler who built a road up here for timber in the 1870s.",
+        "Ebenezer Bryce is remembered for calling the canyon a hell of a place to lose a cow."
+      ]
+    },
+    {
+      "lat": 37.5315,
+      "lon": -112.2597,
+      "texts": [
+        "Natural Bridge is actually an arch, shaped by frost and rain rather than by a stream.",
+        "Arches like this one form when frost widens cracks in a thin wall of rock, until the middle falls away."
+      ]
+    },
+    {
+      "frac": 0.96,
+      "texts": [
+        "On the clearest days the view from Rainbow Point reaches more than a hundred miles, as far as Arizona.",
+        "Some of the bristlecone pines near Rainbow Point are well over a thousand years old."
+      ]
+    }
+  ],
+  "scenery": {
+    "ecology": {
+      "bands": [
+        2250,
+        2500,
+        2650
+      ],
+      "elevJitter": 45,
+      "clear": [
+        8,
+        25
+      ],
+      "redCanyon": {
+        "s": [
+          7500,
+          11500
+        ],
+        "density": 0.3,
+        "clear": [
+          20,
+          45
+        ]
+      },
+      "openSections": [
+        {
+          "s": [
+            0,
+            7000
+          ],
+          "density": 0.8
+        },
+        {
+          "s": [
+            24000,
+            29500
+          ],
+          "density": 0.7
+        }
+      ],
+      "keepClear": [
+        {
+          "s": 9915,
+          "r": 40
+        },
+        {
+          "s": 10065,
+          "r": 40
+        }
+      ]
+    },
+    "vistas": [
+      {
+        "lat": 37.54455,
+        "lon": -112.24686,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.54635,
+        "lon": -112.24459,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.53185,
+        "lon": -112.26019,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.52441,
+        "lon": -112.26037,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.51646,
+        "lon": -112.26464,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.50369,
+        "lon": -112.26237,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.49672,
+        "lon": -112.25696,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.49451,
+        "lon": -112.25491,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.48057,
+        "lon": -112.24733,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.47598,
+        "lon": -112.24068,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.47244,
+        "lon": -112.24022,
+        "r": 70,
+        "ext": 150
+      },
+      {
+        "lat": 37.54425,
+        "lon": -112.2451,
+        "r": 70,
+        "ext": 150
+      }
+    ],
+    "rimGlimpse": {
+      "s": [
+        44000,
+        57700
+      ],
+      "rim": 150,
+      "drop": 20,
+      "reach": 90,
+      "keep": 0.35
+    }
+  }
+}

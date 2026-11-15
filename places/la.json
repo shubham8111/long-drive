@@ -1,0 +1,128 @@
+{
+  "id": "la",
+  "name": "Sunset Boulevard to the Pacific",
+  "region": "Los Angeles",
+  "short": "Los Angeles",
+  "blurb": "Sunset Boulevard, all the way from downtown to the ocean.",
+  "kind": "city",
+  "source": {
+    "type": "osrm",
+    "points": [
+      [
+        -118.25,
+        34.0622
+      ],
+      [
+        -118.2606,
+        34.0782
+      ],
+      [
+        -118.3267,
+        34.0981
+      ],
+      [
+        -118.385,
+        34.0907
+      ],
+      [
+        -118.4138,
+        34.0817
+      ],
+      [
+        -118.4702,
+        34.0653
+      ],
+      [
+        -118.554,
+        34.039
+      ]
+    ]
+  },
+  "stops": [
+    {
+      "name": "Downtown LA",
+      "at": "start"
+    },
+    {
+      "name": "Echo Park",
+      "lat": 34.0782,
+      "lon": -118.2606
+    },
+    {
+      "name": "Hollywood · Sunset & Vine",
+      "lat": 34.0981,
+      "lon": -118.3267
+    },
+    {
+      "name": "Sunset Strip",
+      "lat": 34.0907,
+      "lon": -118.385
+    },
+    {
+      "name": "Beverly Hills",
+      "lat": 34.0817,
+      "lon": -118.4138
+    },
+    {
+      "name": "Brentwood",
+      "lat": 34.064,
+      "lon": -118.475
+    },
+    {
+      "name": "Pacific Palisades",
+      "lat": 34.039,
+      "lon": -118.554
+    }
+  ],
+  "facts": [
+    {
+      "frac": 0.02,
+      "texts": [
+        "Sunset Boulevard gave its name to a famous film, from 1950.",
+        "Los Angeles will host the Summer Olympics again in 2028, its third time."
+      ]
+    },
+    {
+      "lat": 34.0782,
+      "lon": -118.2606,
+      "texts": [
+        "Echo Park Lake began as a drinking-water reservoir in the 1860s.",
+        "Echo Park Lake is famous for its lotus flowers, celebrated each summer with a festival."
+      ]
+    },
+    {
+      "lat": 34.0981,
+      "lon": -118.3267,
+      "texts": [
+        "The first film studio in Hollywood opened a few blocks from here, on Sunset, in 1911.",
+        "The Hollywood sign went up in 1923. It first read Hollywoodland, to sell new houses on the hill.",
+        "Hollywood joined the city of Los Angeles in 1910, largely for its water.",
+        "For Once Upon a Time in Hollywood, in 2019, whole stretches of Sunset and Hollywood Boulevard were dressed back to how they looked in 1969."
+      ]
+    },
+    {
+      "lat": 34.0907,
+      "lon": -118.385,
+      "texts": [
+        "The Sunset Strip is about a mile and a half long, and for decades sat just outside the Los Angeles city limits.",
+        "Clubs on the Strip, like the Whisky a Go Go, helped launch some of the biggest bands of the sixties."
+      ]
+    },
+    {
+      "lat": 34.0817,
+      "lon": -118.4138,
+      "texts": [
+        "The Beverly Hills Hotel opened in 1912, before there was a city of Beverly Hills.",
+        "The Beverly Hills Hotel is known as the Pink Palace, for its famous pink walls."
+      ]
+    },
+    {
+      "frac": 0.93,
+      "texts": [
+        "Sunset Boulevard ends right by the ocean, where it meets the Pacific Coast Highway.",
+        "The Santa Monica Mountains here are part of the Transverse Ranges, among the few mountain ranges in America that run east to west.",
+        "The coast just south of here, around Santa Monica and Venice, is known as Silicon Beach, for all its tech companies."
+      ]
+    }
+  ]
+}

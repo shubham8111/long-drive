@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><div id="p"></div>
+<script>
+// checks whether YouTube's auto "mix" (list=RD<videoId>) loads and can be read in the embedded player
+window.out = [];
+window.onYouTubeIframeAPIReady = () => {
+  const p = new YT.Player('p', { width: 320, height: 180, playerVars: { autoplay: 1, mute: 1 }, events: {
+    onReady: () => { p.cuePlaylist({ listType: 'playlist', list: 'RDmrZRURcb1cM' }); let n = 0;
+      const t = setInterval(() => { const g = p.getPlaylist && p.getPlaylist(); if ((g && g.length) || ++n > 30) { clearInterval(t); out.push({ ids: g && g.length, first: g && g.slice(0, 3) }); window.done = 1; } }, 300); },
+    onError: (e) => out.push({ err: e.data }) } });
+};
+</script><script src="https://www.youtube.com/iframe_api"></script>

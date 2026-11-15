@@ -1,0 +1,52 @@
+<!doctype html><html><body style="margin:0;background:#000"><canvas id="view" style="width:100vw;height:100vh;display:block"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { Geo } from '/src/geo.js';
+import { Route, Road } from '/src/route.js';
+import { Terrain } from '/src/terrain.js';
+import { SkySystem } from '/src/sky.js';
+import { Elements } from '/src/elements.js';
+import { Buildings } from '/src/buildings.js';
+import { StreetFurniture } from '/src/street.js';
+import { buildAssets } from '/src/assets.js';
+const q = new URLSearchParams(location.search);
+const data = await (await fetch(`/routes/${new URLSearchParams(location.search).get('place') || 'bryce'}.json`)).json();
+const geo = new Geo(data.origin.lat, data.origin.lon), route = new Route(data);
+const canvas = document.getElementById('view');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.5;
+renderer.setSize(innerWidth, innerHeight, false);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(62, innerWidth / innerHeight, 0.15, 400000);
+const sky = new SkySystem(scene, renderer, data.origin.lat);
+const terrain = new Terrain(scene, geo, route, renderer, sky.shared);
+const road = new Road(route, scene, renderer, sky.shared);
+const elements = new Elements(scene, geo, buildAssets(renderer, sky.shared), data.id);
+const buildings = new Buildings(scene, geo, data, sky.shared, renderer);
+window.__b = buildings;
+const street = new StreetFurniture(scene, geo, data, sky.shared, renderer);
+window.__street = street;
+const s = +(q.get('km') || 1) * 1000, hours = +(q.get('hours') || 16.5), weather = q.get('weather') || 'clear';
+const P = route.sample(s), look = +(q.get('look') || 0), up = +(q.get('up') || 1.2);
+const yaw = Math.atan2(-P.tx, -P.tz) + look;
+camera.rotation.order = 'YXZ';
+camera.position.set(P.x - P.tz * 1.75, P.y + up, P.z + P.tx * 1.75);
+camera.rotation.set(+(q.get('pitch') || 0), yaw, 0);
+const v = new THREE.Vector3();
+let last = performance.now();
+window.__errs = [];
+window.addEventListener('error', (e) => __errs.push(String(e.message)));
+function frame(now) {
+  requestAnimationFrame(frame);
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  sky.update(q.get('fast') ? 5 : dt, camera, hours, weather, v);
+  terrain.update(camera.position.x, camera.position.z);
+  road.update(s);
+  elements.update(1, camera.position.x, camera.position.z); if (sky.envTexture) { road.setEnvMap(sky.envTexture); buildings.setEnvMap(sky.envTexture); }
+  buildings.update(dt, camera.position.x, camera.position.z);
+  street.update(dt, camera.position.x, camera.position.z); if (sky.envTexture) street.setEnvMap(sky.envTexture);
+  renderer.render(scene, camera);
+  window.__status = { ready: terrain.readyCount, busy: terrain.busy, settled: terrain.settled(camera.position.x, camera.position.z) && elements.count > 0 && (!buildings.index || (buildings.queue.length === 0 && buildings.count > 0)), buildings: buildings.count, bstats: buildings.stats, btris: buildings.triangles, bcalls: buildings.drawCalls, elements: elements.count, near: elements.near.size, street: street.visible, scalls: street.drawCalls, glowN: street.glowCount, calls: renderer.info.render.calls, tris: renderer.info.render.triangles };
+}
+requestAnimationFrame(frame);
+</script></body></html>

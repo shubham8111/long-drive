@@ -1,0 +1,131 @@
+{
+ "places": [
+  {
+   "id": "bryce",
+   "name": "Bryce Canyon Scenic Drive",
+   "short": "Bryce Canyon",
+   "region": "Utah",
+   "kind": "scenic",
+   "km": 57.7,
+   "loop": false,
+   "stops": [
+    0.06,
+    26.5,
+    30.46,
+    33.19,
+    45.71,
+    48.69,
+    55.2
+   ]
+  },
+  {
+   "id": "la",
+   "name": "Sunset Boulevard to the Pacific",
+   "short": "Los Angeles",
+   "region": "Los Angeles",
+   "kind": "city",
+   "km": 39.7,
+   "loop": false,
+   "stops": [
+    0.06,
+    3.32,
+    12.01,
+    18.16,
+    21.14,
+    29.14,
+    39.67
+   ]
+  },
+  {
+   "id": "london",
+   "name": "Tower Bridge to Hyde Park",
+   "short": "London",
+   "region": "London",
+   "kind": "city",
+   "km": 11,
+   "loop": false,
+   "stops": [
+    0.06,
+    3.34,
+    4.72,
+    5.89,
+    6.78,
+    9.02,
+    11.01
+   ]
+  },
+  {
+   "id": "manhattan",
+   "name": "Times Square to Washington Square",
+   "short": "Manhattan",
+   "region": "Manhattan, New York",
+   "kind": "city",
+   "km": 9.5,
+   "loop": true,
+   "stops": [
+    0,
+    0.96,
+    2.06,
+    2.3,
+    3.3,
+    4.55,
+    7.64,
+    8.28
+   ]
+  },
+  {
+   "id": "paris",
+   "name": "Champs-Élysées to Notre-Dame",
+   "short": "Paris",
+   "region": "Paris",
+   "kind": "city",
+   "km": 9.9,
+   "loop": false,
+   "stops": [
+    0.06,
+    0.97,
+    2.02,
+    3.61,
+    5.17,
+    6.95,
+    9.93
+   ]
+  },
+  {
+   "id": "monaco",
+   "name": "Circuit de Monaco",
+   "short": "Monaco GP",
+   "region": "Monte Carlo",
+   "kind": "circuit",
+   "km": 3.3,
+   "loop": true,
+   "stops": [
+    0
+   ]
+  },
+  {
+   "id": "silverstone",
+   "name": "Silverstone",
+   "short": "Silverstone",
+   "region": "England",
+   "kind": "circuit",
+   "km": 5.9,
+   "loop": true,
+   "stops": [
+    0
+   ]
+  },
+  {
+   "id": "spa",
+   "name": "Spa-Francorchamps",
+   "short": "Spa",
+   "region": "Belgium",
+   "kind": "circuit",
+   "km": 7,
+   "loop": true,
+   "stops": [
+    0
+   ]
+  }
+ ]
+}

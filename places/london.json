@@ -1,0 +1,145 @@
+{
+  "id": "london",
+  "name": "Tower Bridge to Hyde Park",
+  "region": "London",
+  "short": "London",
+  "blurb": "Along the Thames, past Westminster, and out to the park.",
+  "kind": "city",
+  "leftHand": true,
+  "source": {
+    "type": "osrm",
+    "points": [
+      [
+        -0.0754,
+        51.5074
+      ],
+      [
+        -0.1167,
+        51.5097
+      ],
+      [
+        -0.1262,
+        51.5008
+      ],
+      [
+        -0.1281,
+        51.508
+      ],
+      [
+        -0.134,
+        51.51
+      ],
+      [
+        -0.1527,
+        51.5027
+      ],
+      [
+        -0.1589,
+        51.5131
+      ]
+    ]
+  },
+  "stops": [
+    {
+      "name": "Tower Bridge",
+      "at": "start"
+    },
+    {
+      "name": "Victoria Embankment",
+      "lat": 51.5097,
+      "lon": -0.1167
+    },
+    {
+      "name": "Big Ben",
+      "lat": 51.5008,
+      "lon": -0.1262
+    },
+    {
+      "name": "Trafalgar Square",
+      "lat": 51.508,
+      "lon": -0.1281
+    },
+    {
+      "name": "Piccadilly Circus",
+      "lat": 51.51,
+      "lon": -0.134
+    },
+    {
+      "name": "Hyde Park Corner",
+      "lat": 51.5027,
+      "lon": -0.1527
+    },
+    {
+      "name": "Marble Arch",
+      "lat": 51.5131,
+      "lon": -0.1589
+    }
+  ],
+  "facts": [
+    {
+      "frac": 0.02,
+      "texts": [
+        "Tower Bridge opened in 1894. Its roadway still lifts for tall ships, around eight hundred times a year.",
+        "Tower Bridge is often mistaken for London Bridge, which is the plainer one just upstream.",
+        "The climax of the 2009 Sherlock Holmes film is set high on Tower Bridge, while it is still being built.",
+        "For the 2012 Olympics, a giant set of Olympic rings hung from Tower Bridge's high walkway.",
+        "The London Marathon crosses Tower Bridge at about the halfway mark, one of the loudest spots on the course."
+      ]
+    },
+    {
+      "lat": 51.5097,
+      "lon": -0.1167,
+      "texts": [
+        "The Victoria Embankment was built in the 1860s over a new main sewer, on land reclaimed from the Thames.",
+        "Cleopatra's Needle, on the Embankment, is an Egyptian obelisk about three and a half thousand years old.",
+        "Every New Year's Eve, fireworks pour off the London Eye, just across the river from here.",
+        "In 2025 a new super sewer opened deep under the Thames, twenty-five kilometres long, to keep the river clean."
+      ]
+    },
+    {
+      "lat": 51.5008,
+      "lon": -0.1262,
+      "texts": [
+        "Big Ben is the bell, not the tower. The tower was renamed Elizabeth Tower in 2012.",
+        "For the film 28 Days Later, Westminster Bridge was emptied for a few minutes at dawn, so the city looked deserted.",
+        "For the Bond film Spectre, in 2015, Westminster Bridge was closed over several weekends to film a helicopter crash-landing on it.",
+        "The great clock is fine-tuned with old pennies. Each penny added to the pendulum makes it gain two fifths of a second a day."
+      ]
+    },
+    {
+      "lat": 51.508,
+      "lon": -0.1281,
+      "texts": [
+        "Norway has sent a Christmas tree to Trafalgar Square every year since 1947, as thanks for help in the Second World War.",
+        "The fourth plinth in Trafalgar Square stands empty of a statue. Instead it shows a new piece of modern art every couple of years."
+      ]
+    },
+    {
+      "lat": 51.51,
+      "lon": -0.134,
+      "texts": [
+        "The statue at Piccadilly Circus is usually called Eros, but it was meant to be his brother, Anteros.",
+        "Piccadilly is named after piccadills, stiff lace collars made by a tailor who lived nearby.",
+        "In 28 Days Later, the hero wanders an empty Piccadilly Circus, beneath the statue of Eros.",
+        "The curved screen at Piccadilly Circus, put up in 2017, has around eleven million pixels, one of the largest of its kind in Europe."
+      ]
+    },
+    {
+      "lat": 51.5027,
+      "lon": -0.1527,
+      "texts": [
+        "Wellington Arch once carried an enormous statue of the Duke on horseback. It was moved away in the 1880s.",
+        "Wellington Arch once housed a tiny police station."
+      ]
+    },
+    {
+      "lat": 51.5131,
+      "lon": -0.1589,
+      "texts": [
+        "Marble Arch was designed as a gateway to Buckingham Palace, and moved here in 1851.",
+        "Near Marble Arch stood the Tyburn gallows, used for executions for about six hundred years.",
+        "By tradition, only senior royals and one troop of the King's artillery may pass through Marble Arch."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "monaco",
+  "name": "Circuit de Monaco",
+  "region": "Monte Carlo",
+  "short": "Monaco GP",
+  "blurb": "The harbour, the tunnel and the hairpin, at your own pace.",
+  "kind": "circuit",
+  "loop": true,
+  "source": {
+    "type": "geojson",
+    "url": "https://raw.githubusercontent.com/bacinger/f1-circuits/master/circuits/mc-1929.geojson"
+  },
+  "stops": [
+    {
+      "name": "Start / Finish",
+      "at": "start"
+    }
+  ],
+  "scenery": {
+    "ground": "paved"
+  },
+  "road": {
+    "half": 7.5
+  },
+  "facts": [
+    {
+      "frac": 0.06,
+      "texts": [
+        "The Monaco Grand Prix has been run on these streets since 1929.",
+        "Monaco is the second smallest country in the world, after Vatican City.",
+        "Ayrton Senna won here six times, more than anyone else.",
+        "In 2024 Charles Leclerc, who grew up here, won his home race. He was the first driver from Monaco to win it since 1931.",
+        "Formula E, the all-electric racing series, also races on these streets."
+      ]
+    },
+    {
+      "lat": 43.7406,
+      "lon": 7.4296,
+      "texts": [
+        "The hairpin here is the slowest corner in Formula One, taken at about thirty miles an hour.",
+        "The cars come round this hairpin so slowly that drivers use their tightest steering lock in all of Formula One.",
+        "In 2024 Monaco opened Mareterra, a new seaside district built out over the sea, making the whole country about three percent bigger."
+      ]
+    },
+    {
+      "frac": 0.7,
+      "texts": [
+        "Monaco's tunnel, under the Fairmont hotel, is one of the rare places where Formula One cars race underground.",
+        "Overtaking is so hard here that the race is often won in qualifying, the day before.",
+        "In Iron Man 2, Tony Stark races a car at the Monaco Historic Grand Prix, and is attacked out on the track.",
+        "Every September, Port Hercule fills with superyachts for the Monaco Yacht Show."
+      ]
+    }
+  ]
+}

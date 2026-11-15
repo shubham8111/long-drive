@@ -1,0 +1,15 @@
+import puppeteer from '/Users/stark/code/long_drive/node_modules/puppeteer-core/lib/puppeteer/puppeteer-core.js';
+const pl = process.argv[2] || 'manhattan';
+const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist', '--mute-audio'] });
+const p = await b.newPage(); await p.setViewport({ width: 1440, height: 810 });
+await p.goto(`http://localhost:5173/?auto=1&place=${pl}&weather=clear&stop=2`, { waitUntil: 'domcontentloaded' });
+await new Promise((r) => setTimeout(r, 7000));
+await p.evaluate(() => { const L = window.__ld, li = L.life; li.warmup(L.renderer, L.camera); L.traffic.warmup(L.renderer, L.camera); window.__sp = [];
+  const w = (o, k, name) => { const f = o[k].bind(o); o[k] = (...a) => { const t = performance.now(); const r = f(...a); const d = performance.now() - t; if (d > 0.7) window.__sp.push(name + ':' + d.toFixed(1)); return r; }; };
+  for (const k of ['spawnDeer','spawnHare','spawnSoarer','spawnOwl','spawnSongbirds','spawnPed','spawnBench','spawnPigeons','spawnMarshal','spawnSpectators','spawnInfield','schedule','findVerge','lineOfSight','add','remove']) if (li[k]) w(li, k, k);
+  const ad = li.add.bind(li); li.add = (th) => { const u = th.update.bind(th); th.update = (dt, c) => { const t = performance.now(); const r = u(dt, c); const d = performance.now() - t; if (d > 0.5) window.__sp.push('thing_' + th.type + ':' + d.toFixed(1)); return r; }; return ad(th); };
+  w(li.map, 'pump', 'pump'); w(li.map, 'clearance', 'clear'); w(li, 'onScreen', 'onscr'); w(li.map, 'ensure', 'ensure'); w(li.birds, 'update', 'birds'); w(li, 'prebuildStep', 'pre');
+  const f = li.update.bind(li); li.update = (dt, c) => { const t = performance.now(); f(dt, c); const d = performance.now() - t; if (d > 1.5) window.__sp.push('UPD:' + d.toFixed(1)); }; });
+await new Promise((r) => setTimeout(r, 40000));
+console.log(JSON.stringify(await p.evaluate(() => window.__sp)));
+b.close().catch(() => {}); setTimeout(() => process.exit(0), 500);

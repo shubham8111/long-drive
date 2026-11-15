@@ -1,0 +1,61 @@
+{
+ "license": "CC0 1.0 Universal (public domain), from FreePD.com (via its mirror a.ocv.me/pub/stuff/music/freepd)",
+ "tracks": [
+  {
+   "id": "kalimba-relaxation-music",
+   "file": "kalimba-relaxation-music.ogg",
+   "title": "Kalimba Relaxation Music",
+   "artist": "Kevin MacLeod",
+   "seconds": 428
+  },
+  {
+   "id": "landra-s-dream",
+   "file": "landra-s-dream.ogg",
+   "title": "Landra's Dream",
+   "artist": "Jason Shaw",
+   "seconds": 88
+  },
+  {
+   "id": "mana-two-part-1",
+   "file": "mana-two-part-1.ogg",
+   "title": "Mana Two - Part 1",
+   "artist": "Kevin MacLeod",
+   "seconds": 234
+  },
+  {
+   "id": "neptunian-princess",
+   "file": "neptunian-princess.ogg",
+   "title": "Neptunian Princess",
+   "artist": "Bryan Teoh",
+   "seconds": 125
+  },
+  {
+   "id": "nostalgic-piano",
+   "file": "nostalgic-piano.ogg",
+   "title": "Nostalgic Piano",
+   "artist": "FreePD",
+   "seconds": 196
+  },
+  {
+   "id": "pond",
+   "file": "pond.ogg",
+   "title": "Pond",
+   "artist": "FreePD",
+   "seconds": 152
+  },
+  {
+   "id": "shining-stars",
+   "file": "shining-stars.ogg",
+   "title": "Shining Stars",
+   "artist": "FreePD",
+   "seconds": 140
+  },
+  {
+   "id": "study-and-relax",
+   "file": "study-and-relax.ogg",
+   "title": "Study and Relax",
+   "artist": "Kevin MacLeod",
+   "seconds": 223
+  }
+ ]
+}

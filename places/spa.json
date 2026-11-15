@@ -1,0 +1,47 @@
+{
+  "id": "spa",
+  "name": "Spa-Francorchamps",
+  "region": "Belgium",
+  "short": "Spa",
+  "blurb": "Through the Ardennes forest: Eau Rouge without the hurry.",
+  "kind": "circuit",
+  "loop": true,
+  "source": {
+    "type": "geojson",
+    "url": "https://raw.githubusercontent.com/bacinger/f1-circuits/master/circuits/be-1925.geojson"
+  },
+  "stops": [
+    {
+      "name": "Start / Finish",
+      "at": "start"
+    }
+  ],
+  "facts": [
+    {
+      "frac": 0.03,
+      "texts": [
+        "Spa first held a race in 1921 on public roads, a lap of nearly fifteen kilometres.",
+        "The Spa twenty-four hours, one of the oldest endurance races in the world, was first run in 1924.",
+        "Spa is famous for its weather: it can rain on one part of the track while another stays dry.",
+        "In 2021 heavy rain meant the Belgian Grand Prix was run for only a couple of laps behind the safety car. It went down as the shortest race in Formula One history.",
+        "In 2024 George Russell won here, then was disqualified because his car was a kilo and a half too light, handing the win to his teammate, Lewis Hamilton."
+      ]
+    },
+    {
+      "lat": 50.4335,
+      "lon": 5.9716,
+      "texts": [
+        "Eau Rouge is named for the stream at the bottom, red from iron in the water. The climb beyond it is Raidillon.",
+        "Drivers take Eau Rouge and Raidillon almost flat out, climbing steeply as the car is pressed into the road."
+      ]
+    },
+    {
+      "frac": 0.6,
+      "texts": [
+        "At seven kilometres, this is the longest lap on the Formula One calendar.",
+        "The circuit is named after the nearby town of Spa, whose mineral springs gave the word spa to the world.",
+        "Michael Schumacher won at Spa six times, more than any other driver."
+      ]
+    }
+  ]
+}
