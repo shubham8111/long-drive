@@ -251,7 +251,7 @@ const startWeather = (w) => {
   for (const [id, n] of odds) if ((r -= n) <= 0) return id;
   return 'clear';
 };
-const wx = { id: startWeather(set.weather), left: 60 + Math.random() * 120, drifting: false };
+const wx = { id: startWeather(set.weather), picked: !!WEATHER[set.weather], left: 60 + Math.random() * 120, drifting: false };
 const WX_NEXT = {
   clear: [['clouds', 5], ['clear', 2], ['mist', 0.6]],
   clouds: [['clear', 3], ['overcast', 3], ['rain', 1]],
@@ -266,7 +266,7 @@ const WX_SAY = {
 };
 function driftWeather(dt) {
   if (params.get('wxlock') === '1' || demoOn) { wx.drifting = false; sky.wxRate = 1; return; } // (the demo sets each chapter's weather)
-  if (!wx.drifting) { wx.drifting = true; sky.wxRate = 1; wx.left = 90 + Math.random() * 150; if (params.has('wxfast')) wx.left = 6; return; }
+  if (!wx.drifting) { wx.drifting = true; sky.wxRate = 1; wx.left = wx.picked ? 600 + Math.random() * 300 : 90 + Math.random() * 150; if (params.has('wxfast')) wx.left = 6; return; }
   if (!ui.started) return;
   wx.left -= dt;
   if (wx.left > 0) return;
@@ -476,7 +476,7 @@ ui.onChange = (key, value) => {
   else if (key === 'windDown') { if (ui.started) startWindDown(value); }
   else if (key === 'quiet') radio.setQuiet(!!value);
   else if (key === 'interleave') { trip.order = []; trip.nextAt = trip.dist + tunnelGap(); } // on: the next tunnel in 4-5 km; off: none
-  else if (key === 'weather') { wx.id = startWeather(value); wx.drifting = false; sky.wxRate = 1; } // the start screen's preview
+  else if (key === 'weather') { wx.id = startWeather(value); wx.picked = !!WEATHER[value]; wx.drifting = false; sky.wxRate = 1; } // the start screen's preview
   else if (key === 'stop') { st.s = route.stops[value].s; st.dir = 1; snapPose(); }
   else if (key === 'jump') jumpTo(route.stops[value].s, false);
   else if (key === 'station') radio.setStation(value);

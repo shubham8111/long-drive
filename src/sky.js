@@ -321,9 +321,9 @@ export class SkySystem {
       uTime: { value: 0 }, uSize: { value: 0 }, uSway: { value: 0 }, uAlpha: { value: 0 }, uColor: { value: new THREE.Color(0.8, 0.85, 0.9) },
     });
     this.rainU = pu();
-    this.rain = new THREE.LineSegments(mk(7000, true), new THREE.ShaderMaterial({ vertexShader: PRECIP_VS, fragmentShader: RAIN_FS, uniforms: this.rainU, transparent: true, depthWrite: false }));
+    this.rain = new THREE.LineSegments(mk(14000, true), new THREE.ShaderMaterial({ vertexShader: PRECIP_VS, fragmentShader: RAIN_FS, uniforms: this.rainU, transparent: true, depthWrite: false }));
     this.snowU = pu();
-    this.snow = new THREE.Points(mk(9000, false), new THREE.ShaderMaterial({ vertexShader: PRECIP_VS, fragmentShader: SNOW_FS, uniforms: this.snowU, transparent: true, depthWrite: false }));
+    this.snow = new THREE.Points(mk(16000, false), new THREE.ShaderMaterial({ vertexShader: PRECIP_VS, fragmentShader: SNOW_FS, uniforms: this.snowU, transparent: true, depthWrite: false }));
     for (const o of [this.rain, this.snow]) { o.frustumCulled = false; o.renderOrder = 20; o.visible = false; scene.add(o); }
   }
 
@@ -494,21 +494,21 @@ export class SkySystem {
     this.sun.position.copy(camera.position).addScaledVector(this.lightDir, 120);
 
     // precipitation
-    const bright = lerp(0.12, 1, day);
     this.rain.visible = w.rain > 0.02;
     if (this.rain.visible) {
       const u = this.rainU;
       u.uCam.value.copy(camera.position); u.uTime.value = this.t;
       u.uDrift.value.set(1.5, -11, 0.6);
-      u.uStreak.value.set(1.5 - camVel.x, -11, 0.6 - camVel.z).multiplyScalar(0.03);
-      u.uAlpha.value = 0.3 * w.rain * bright;
+      u.uStreak.value.set(1.5 - camVel.x, -11, 0.6 - camVel.z).multiplyScalar(0.07);
+      u.uAlpha.value = 0.55 * w.rain * lerp(0.6, 1, day); // at night the drops still catch street and head lights
+      u.uColor.value.setRGB(lerp(0.85, 0.78, day), lerp(0.82, 0.84, day), lerp(0.76, 0.9, day));
     }
     this.snow.visible = w.snow > 0.02;
     if (this.snow.visible) {
       const u = this.snowU;
       u.uCam.value.copy(camera.position); u.uTime.value = this.t;
-      u.uDrift.value.set(0.5, -1.3, 0.25); u.uSway.value = 0.35; u.uSize.value = 46;
-      u.uAlpha.value = 0.85 * w.snow * lerp(0.35, 1, day);
+      u.uDrift.value.set(0.5, -1.3, 0.25); u.uSway.value = 0.35; u.uSize.value = 62;
+      u.uAlpha.value = 0.95 * w.snow * lerp(0.55, 1, day);
       u.uColor.value.setRGB(1, 1, 1);
     }
   }

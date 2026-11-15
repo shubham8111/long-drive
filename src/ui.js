@@ -45,7 +45,7 @@ export class UI {
     // validate against runtime options
     if (s.stop !== -1 && !(s.stop >= 0 && s.stop < opts.stops.length)) s.stop = opts.settings.stop || 0;
     if (!opts.rides[s.ride]) s.ride = opts.settings.ride;
-    s.weather = 'any'; // (no longer chosen on the start screen: the drive begins in whatever the sky brings)
+    if (!opts.weather || !opts.weather[s.weather]) s.weather = 'any';
     if (!opts.stations.some((x) => x.id === s.station)) s.station = opts.settings.station;
     if (typeof s.hours !== 'number' || isNaN(s.hours)) s.hours = opts.settings.hours;
     this.settings = s;
@@ -130,7 +130,7 @@ export class UI {
     });
   }
 
-  // The start screen asks only where and at what hour to begin, how to travel and what music to bring
+  // The start screen asks only where, at what hour and in what weather to begin, how to travel and what music to bring
   // (two switches below the music: wind down and interleave). After that the drive goes on by itself
   // (time flows, the weather drifts, and with interleave on, place follows place through tunnels).
   // The settings drawer holds what can be changed on the way: the ride and the radio.
@@ -143,6 +143,12 @@ export class UI {
           () => o.place, (id) => { if (id !== o.place && this.onChange) this.onChange('place', id, this.settings); });
       }
       this._buildTime(root);
+      if (o.weather) {
+        const SHORT = { any: 'Any', clear: 'Clear', clouds: 'Clouds', overcast: 'Overcast', mist: 'Mist', rain: 'Rain', snow: 'Snow' };
+        const wBody = this._group(root, 'Starting weather');
+        this._chipGroup(wBody, Object.entries(o.weather).map(([id, w]) => ({ value: id, label: SHORT[id] || w.label, title: id === 'any' ? 'Whatever the sky brings' : w.label })),
+          () => this.settings.weather, (v) => this._change('weather', v));
+      }
       const rideBody = this._group(root, 'Travel by', 'chips rides');
       this._chipGroup(rideBody, Object.entries(o.rides).map(([id, r]) => ({ value: id, label: r.label })),
         () => this.settings.ride, (v) => this._change('ride', v));

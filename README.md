@@ -53,8 +53,8 @@ another place, so a drive can go on for hours without repeating.
 - **Scenery placed where it really is** — trees are baked from the satellite imagery (canopy where the photo shows
   canopy), species chosen by elevation (juniper → ponderosa → fir, spruce and aspen groves), hoodoo fields grown on
   the steep bare rock below Bryce's rim, rock arches carved with marching cubes.
-- **Time and weather** — a full day/night cycle with sun, moon and stars; clear, cloudy, mist, rain and snow that
-  drift on their own; wet roads, headlights, lit windows at night.
+- **Time and weather** — a full day/night cycle with sun, moon and stars; pick the hour and the weather to start in
+  (clear, clouds, overcast, mist, rain or snow) and from there it drifts on its own; wet roads, headlights, lit windows at night.
 - **A radio** — three stations of free-licensed music (or paste your own YouTube playlist) and an announcer who
   mentions the weather, the hour and true little facts about what you are passing.
 - **Life** — birds, deer, people and light traffic, plus the occasional surprise (hot-air balloons over the canyon,
